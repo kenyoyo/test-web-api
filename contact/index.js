@@ -32,6 +32,9 @@ router.get('/contactList/:check',(req,res)=>{
   {ar.push("Not Found")}
   res.json(ar)
 })
+router.get('/contactList',(req,res)=>{
+  res.json(contactList)
+})
 
 router.post('/contactList', (req, res) => {
   let newContact = req.body
