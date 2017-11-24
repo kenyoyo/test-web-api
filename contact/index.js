@@ -17,12 +17,10 @@ let contactList = [
     {id: 12, fname: 'Brienne of Tarth', email: 'oathkeeper@gmail.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Do not cross her.'},
   ]
 
-<<<<<<< HEAD
 router.get('/contactList', (req, res) => {
     res.json(contactList)
 })
-=======
->>>>>>> b801c11cebd55ce55591be7184f7028c4374d9fa
+
 
 router.get('/contactList/:check',(req,res)=>{
   let check=req.params.check
@@ -39,11 +37,7 @@ router.get('/contactList/:check',(req,res)=>{
   {ar.push("Not Found")}
   res.json(ar)
 })
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 61e4fc2b3cacef33f67ab3819335721d93e8dc67
+
 
 router.get('/contactList',(req,res)=>{
   let test=req.query.name
@@ -69,7 +63,7 @@ router.get('/contactList',(req,res)=>{
   
 
 })
->>>>>>> b801c11cebd55ce55591be7184f7028c4374d9fa
+
 
 router.post('/contactList', (req, res) => {
   let newContact = req.body
