@@ -32,8 +32,30 @@ router.get('/contactList/:check',(req,res)=>{
   {ar.push("Not Found")}
   res.json(ar)
 })
+
 router.get('/contactList',(req,res)=>{
-  res.json(contactList)
+  let test=req.query.name
+  let c
+  let a=[]
+  if(test!=c){
+    for(var i=0;i<contactList.length;i++)
+    {
+      if(test==contactList[i].name)
+      {
+        a.push(contactList[i])
+      }
+    }
+  }
+  else{
+    for(var i=0;i<contactList.length;i++)
+    {
+      
+        a.push(contactList[i])
+      
+    }}
+  res.json(a)
+  
+
 })
 
 router.post('/contactList', (req, res) => {
