@@ -19,7 +19,11 @@ let contactList = [
 router.get('/contactList',(req,res)=>{
     res.json(contactList)
 })
-
+router.get('/contactList/:id',(req,res)=>{
+  let id = req.params.id
+  let cont=contactList[id]
+  res.json(cont)
+})
 
 
 
