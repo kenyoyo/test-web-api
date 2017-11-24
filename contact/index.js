@@ -84,4 +84,15 @@ router.put('/contact/:id', (req,res) =>  {
     res.json(contact[editId])
 })
 
+  router.delete('/contact/:id', (req, res) => {
+    contact.Remove({ id: req.params.id }, function(err) {
+      if(!err) {
+        return res.send('User deleted');
+      }
+      else {
+        return res.send('Error deleting user');
+      }
+    })
+  })
+
   module.exports = router 
