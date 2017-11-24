@@ -17,11 +17,6 @@ let contactList = [
     {id: 12, fname: 'Brienne of Tarth', email: 'oathkeeper@gmail.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Do not cross her.'},
   ]
 
-router.get('/contactList', (req, res) => {
-    res.json(contactList)
-})
-
-
 
 router.get('/contactList/:check',(req,res)=>{
   let check=req.params.check
@@ -29,7 +24,7 @@ router.get('/contactList/:check',(req,res)=>{
   for(var i=0;i<contactList.length;i++)
   {
     let find=contactList[i]
-    if(check==contactList[i].name||check==contactList[i].id||check==contactList[i].email||check==contactList[i].notes||check==contactList[i].phone||check[i]==contactList[i].url)
+    if(check==contactList[i].fname ||check==contactList[i].id||check==contactList[i].email||check==contactList[i].notes||check==contactList[i].phone||check[i]==contactList[i].url)
     {
         ar.push(contactList[i])
     }
@@ -38,6 +33,7 @@ router.get('/contactList/:check',(req,res)=>{
   {ar.push("Not Found")}
   res.json(ar)
 })
+
 router.get('/contactList',(req,res)=>{
   res.json(contactList)
 })
