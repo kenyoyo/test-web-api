@@ -85,14 +85,8 @@ router.put('/contact/:id', (req,res) =>  {
 })
 
   router.delete('/contact/:id', (req, res) => {
-    contact.Remove({ id: req.params.id }, function(err) {
-      if(!err) {
-        return res.send('User deleted');
-      }
-      else {
-        return res.send('Error deleting user');
-      }
-    })
+    contact.splice(req.params.id, 1)
+    return res.send('User deleted')
   })
 
   module.exports = router 
