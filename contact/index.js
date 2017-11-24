@@ -14,6 +14,7 @@ let contactList = [
     {id: 9, name: 'Margaery Tyrell', email: 'mtyrell@highgarden.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Keeper of kings.'},
     {id: 10, name: 'Brienne of Tarth', email: 'oathkeeper@gmail.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Do not cross her.'},
     {id: 11, name: 'Petyr Baelish', email: 'petyr@baelishindustries.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Do not trust anyone.'},
+    {id: 12, name: 'Brienne of Tarth', email: 'oathkeeper@gmail.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Do not cross her.'},
   ]
 
 router.get('/contactList/:check',(req,res)=>{
@@ -22,11 +23,13 @@ router.get('/contactList/:check',(req,res)=>{
   for(var i=0;i<contactList.length;i++)
   {
     let find=contactList[i]
-    if(check==contactList[i].name)
+    if(check==contactList[i].name||check==contactList[i].id||check==contactList[i].email||check==contactList[i].notes||check==contactList[i].phone||check[i]==contactList[i].url)
     {
         ar.push(contactList[i])
     }
-  }  
+  } 
+  if(ar.length==0)
+  {ar.push("Not Found")}
   res.json(ar)
 })
 
@@ -38,11 +41,7 @@ router.post('/contactList', (req, res) => {
 })
 
 
-router.get('/contactList/:id',(req,res)=>{
-  let id = req.params.id
-  let cont=contactList[id]
-  res.json(cont)
-})
+
 
 
 
