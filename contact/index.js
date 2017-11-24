@@ -1,9 +1,6 @@
 const express =require('express')
-const app = express()
-const bodyParser =require('body-parser')
+const router = express.Router()
 
-app.get('/',function(req,res)
-{res.send('HelloWorld')})
 let contactList = [
     {id: 0, name: 'Ned Stark', email: 'ned@winterfell.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Winter is coming.'},
     {id: 1, name: 'Theon Greyjoy', email: 'tgreyjoy@winterfell.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Reluctant to pay iron price.'},
@@ -18,8 +15,12 @@ let contactList = [
     {id: 10, name: 'Brienne of Tarth', email: 'oathkeeper@gmail.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Do not cross her.'},
     {id: 11, name: 'Petyr Baelish', email: 'petyr@baelishindustries.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Do not trust anyone.'},
   ]
-  app.get('/contactList',(req,res)=>{
-res.json(contactList)})
 
-app.listen(3000,()=>console.log('Hello'))
+router.get('/contactList',(req,res)=>{
+    res.json(contactList)
+})
 
+
+
+
+  module.exports = router 
