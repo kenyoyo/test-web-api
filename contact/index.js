@@ -16,8 +16,18 @@ let contactList = [
     {id: 11, name: 'Petyr Baelish', email: 'petyr@baelishindustries.com', phone: '123-456-7890', url: 'www.google.com', notes: 'Do not trust anyone.'},
   ]
 
-router.get('/contactList',(req,res)=>{
-    res.json(contactList)
+router.get('/contactList/:check',(req,res)=>{
+  let check=req.params.check
+  let ar=[]
+  for(var i=0;i<contactList.length;i++)
+  {
+    let find=contactList[i]
+    if(check==contactList[i].name)
+    {
+        ar.push(contactList[i])
+    }
+  }  
+  res.json(ar)
 })
 
 router.post('/contactList', (req, res) => {
