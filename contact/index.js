@@ -28,6 +28,12 @@ router.post('/contactList', (req, res) => {
 })
 
 
+router.get('/contactList/:id',(req,res)=>{
+  let id = req.params.id
+  let cont=contactList[id]
+  res.json(cont)
+})
+
 
 
   module.exports = router 
