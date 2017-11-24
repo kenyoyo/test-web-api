@@ -21,8 +21,6 @@ router.get('/contactList', (req, res) => {
     res.json(contactList)
 })
 
-
-
 router.get('/contactList/:check',(req,res)=>{
   let check=req.params.check
   let ar=[]
@@ -38,9 +36,6 @@ router.get('/contactList/:check',(req,res)=>{
   {ar.push("Not Found")}
   res.json(ar)
 })
-router.get('/contactList',(req,res)=>{
-  res.json(contactList)
-})
 
 router.post('/contactList', (req, res) => {
   let newContact = req.body
@@ -49,9 +44,18 @@ router.post('/contactList', (req, res) => {
   res.json(newContact)
 })
 
-
-
-
-
+router.put('/contactList/:id', (req,res) =>  {
+  let editId = req.params.id
+  let editContact = req.body
+  editContact.id = editId
+  for(var i=0; i<contactList.length;i++)
+  {
+    if(editId == contactList[i].id)
+    {
+      contactList[i] = editContact
+    }
+  }
+    res.json(contactList[editId])
+})
 
   module.exports = router 
