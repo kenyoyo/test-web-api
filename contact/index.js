@@ -63,25 +63,56 @@ router.get('/contact',(req,res)=>{
 })
 
 
+
+
+function isNullOrWhiteSpace(str) {
+  return (!str || str.length === 0 || /^\s*$/.test(str))
+}
+
 router.post('/contact', (req, res) => {
+
   let newContact = req.body
-  contact.push(newContact)
-  newContact.create = '2017-11-24'
-  res.json(newContact)
+  let tmp = []
+  if(!isNullOrWhiteSpace(newContact.name)   &&  !isNullOrWhiteSpace(newContact.email)){
+    contact.push(newContact)
+    newContact.create = '2017-11-26'
+    tmp.push(newContact)
+  }else if(isNullOrWhiteSpace(newContact.name) && isNullOrWhiteSpace(newContact.email)){
+    tmp.push("name and email is Empty Please enter a valid name & email !")
+  }else if(isNullOrWhiteSpace(newContact.name)){
+    tmp.push("name is Empty Please enter a valid name !")
+  }else if(isNullOrWhiteSpace(newContact.email)){
+    tmp.push("email is Empty Please enter a valid email !")
+  }
+
+  res.json(tmp)
+
 })
 
 router.put('/contact/:id', (req,res) =>  {
   let editId = req.params.id
   let editContact = req.body
-  editContact.id = editId
-  for(var i=0; i<contact.length;i++)
-  {
-    if(editId == contact[i].id)
+  let tmp = []
+  if(!isNullOrWhiteSpace(editContact.name) && !isNullOrWhiteSpace(editContact.email)){
+    editContact.id = editId
+    for(var i=0; i<contact.length;i++)
     {
-      contact[i] = editContact
+      if(editId == contact[i].id)
+      {
+        contact[i] = editContact
+      }
     }
+    tmp.push(contact[editId])
+
+  }else if(isNullOrWhiteSpace(editContact.name)  && isNullOrWhiteSpace(editContact.email)){
+    tmp.push("name and email is Empty Please enter a valid name & email !")
+  }else if(isNullOrWhiteSpace(editContact.name)){
+    tmp.push("name is Empty Please enter a valid name !")
+  }else if(isNullOrWhiteSpace(editContact.email)){
+    tmp.push("email is Empty Please enter a valid email !")
   }
-    res.json(contact[editId])
+    res.json(tmp)
+    
 })
 
   router.delete('/contact/:id', (req, res) => {
