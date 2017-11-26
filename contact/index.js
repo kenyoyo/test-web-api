@@ -92,17 +92,22 @@ router.post('/contact', (req, res) => {
 router.put('/contact/:id', (req,res) =>  {
   let editId = req.params.id
   let editContact = req.body
-  let tmp = []
+  let tmp = [{id: -1, name: '', surname: '', email: '', phone: '', url: '', notes: ''}]
   if(!isNullOrWhiteSpace(editContact.name) && !isNullOrWhiteSpace(editContact.email)){
-    editContact.id = editId
+    tmp[0].id=parseInt(editId)
+    tmp[0].name=editContact.name
+    tmp[0].surname=editContact.surname
+    tmp[0].email=editContact.email
+    tmp[0].phone=editContact.phone
+    tmp[0].url=editContact.url
+    tmp[0].notes=editContact.notes
     for(var i=0; i<contact.length;i++)
     {
       if(editId == contact[i].id)
       {
-        contact[i] = editContact
+        contact[i] = tmp
       }
     }
-    tmp.push(contact[editId])
 
   }else if(isNullOrWhiteSpace(editContact.name)  && isNullOrWhiteSpace(editContact.email)){
     tmp.push("name and email is Empty Please enter a valid name & email !")
